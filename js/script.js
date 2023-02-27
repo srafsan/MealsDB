@@ -28,7 +28,7 @@ const displayFoods = (foods) => {
                 <h2 class="card-title text-2xl font-bold">${food.strMeal}</h2>
                 <p class="my-5 text-lg text-slate-500">There are many variations of <br/> passages of available, but the <br/> majority have suffered</p>
                 <div class="card-actions justify-start">
-                    <button class="btn btn-primary">View Details</button>
+                    <button class="btn btn-warning font-bold">View Details</button>
                 </div>
             </div>
         `;
