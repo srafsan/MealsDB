@@ -13,8 +13,15 @@ const displayFoods = (foods) => {
     const cardContainer = document.getElementById("card-container");
     cardContainer.textContent = "";
 
-    // First 6 foods
-    foods = foods.slice(0, 6);
+    // Dynamic Visibility of ShowALl button
+    const showAll = document.getElementById("show-all");
+
+    if (foods.length > 6) {
+        foods = foods.slice(0, 6);
+        showAll.classList.remove("hidden");
+    } else {
+        showAll.classList.add("hidden");
+    }
 
     foods.forEach((food) => {
         const cardDiv = document.createElement("div");
@@ -42,13 +49,13 @@ const displayFoods = (foods) => {
 // *######
 // The below two function is used to get search text
 
-// This is when pressing the search button
+// 1. This is when pressing the search button
 document.getElementById("btn-search").addEventListener("click", function () {
     const searchText = document.getElementById("search-field").value;
     loadMeals(searchText);
 });
 
-// This is when pressing enter
+// 2. This is when pressing enter
 document
     .getElementById("search-field")
     .addEventListener("keydown", function (e) {

@@ -14,6 +14,7 @@
 </head>
 
 <body class="max-w-screen-2xl mx-auto">
+    <!-- Navigation Bar Section -->
     <header class="mt-12 mb-8 max-w-7xl mx-auto">
         <div class="navbar bg-base-100 flex justify-between">
             <div>
@@ -26,6 +27,7 @@
     </header>
 
     <main>
+        <!-- Banner Section -->
         <section class="relative flex items-center justify-center">
             <img src="images/banner_1.png" class="filter brightness-50 h-[650px] bg-no-repeat">
             <div
@@ -61,10 +63,16 @@
 
             </div>
 
+            <!-- Nothing Found section -->
+            <div id="no-found-message" class="hidden mt-14">
+                <h3 class="text-warning text-center text-6xl font-bold">No Phone Found. Please try new search.</h3>
+            </div>
+
             <!-- load more -->
-            <div id="show-all" class="text-center mt-20">
-                <button id="btn-show-all" class="btn btn-warning btn-lg px-9 text-xl font-bold">Show
-                    All</button>
+            <div id="show-all" class="hidden text-center mt-20">
+                <button id="btn-show-all" class="btn btn-warning btn-lg px-9 text-xl font-bold">
+                    Show All
+                </button>
             </div>
         </section>
     </main>
