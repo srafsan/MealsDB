@@ -15,12 +15,12 @@
 
 <body class="max-w-screen-2xl mx-auto">
     <!-- Navigation Bar Section -->
-    <header class="mt-12 mb-8 max-w-7xl mx-auto">
+    <header class="mt-12 mb-8 max-w-7xl md:mx-auto">
         <div class="navbar bg-base-100 flex justify-between">
-            <div>
+            <div class="flex-1">
                 <img src="images/Tasty_HUT.png" alt="">
             </div>
-            <div class="mr-16">
+            <div class="flex-none md:mr-16">
                 <button class="btn btn-warning text-xl font-medium px-10">Sign Up</button>
             </div>
         </div>
@@ -29,11 +29,11 @@
     <main>
         <!-- Banner Section -->
         <section class="relative flex items-center justify-center">
-            <img src="images/banner_1.png" class="filter brightness-50 h-[650px] bg-no-repeat">
+            <img src="images/banner_1.png" class="object-cover filter brightness-50 h-[650px] bg-no-repeat">
             <div
                 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white text-center">
-                <h1 class="text-6xl font-bold">Taste Our Delicious <br> Best Foods</h1>
-                <p class="text-lg mt-10">
+                <h1 class="text-4xl md:text-6xl font-bold">Taste Our Delicious <br> Best Foods</h1>
+                <p class="text-base md:text-lg mt-10">
                     There are many variations of passages of Lorem Ipsum available, but the majority have <br> suffered
                     alteration in some form, by injected humou.
                 </p>
@@ -41,7 +41,7 @@
                 <div class="form-control w-full mt-8">
                     <div class="input-group">
                         <input id="search-field" type="text" placeholder="Search any food"
-                            class="input input-bordered w-full text-black pl-8" />
+                            class="input input-bordered w-full text-black md:pl-8" />
                         <button id="btn-search" class="btn btn-warning">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -59,7 +59,7 @@
             <h1 class="text-center text-4xl font-semibold text-black mb-12">Your Favorite Food</h1>
 
             <!-- Display foods -->
-            <div id="card-container" class="grid grid-cols-2 gap-6 justify-center">
+            <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
 
             </div>
 
@@ -106,8 +106,7 @@
         </section>
     </main>
 
-    <footer class="footer flex justify-center space-x-32 py-32 text-base-content text-xl font-medium">
-
+    <footer class="footer p-10 text-base-content text-xl font-medium">
         <div>
             <span class="footer-title text-2xl font-bold">Section</span>
             <a class="link link-hover">Home</a>
