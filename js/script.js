@@ -1,14 +1,17 @@
+// This is a function for loading Meals
 const loadMeals = async (foodType) => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodType}`;
     const res = await fetch(url);
     const data = await res.json();
 
-    // console.log(data.meals);
+    // console.log(url);
     displayFoods(data.meals);
 };
 
+// This is a function for displaying meals
 const displayFoods = (foods) => {
     const cardContainer = document.getElementById("card-container");
+    cardContainer.textContent = "";
 
     // First 6 foods
     foods = foods.slice(0, 6);
@@ -35,5 +38,23 @@ const displayFoods = (foods) => {
         cardContainer.appendChild(cardDiv);
     });
 };
+
+// *######
+// The below two function is used to get search text
+
+// This is when pressing the search button
+document.getElementById("btn-search").addEventListener("click", function () {
+    const searchText = document.getElementById("search-field").value;
+    loadMeals(searchText);
+});
+
+// This is when pressing enter
+document
+    .getElementById("search-field")
+    .addEventListener("keydown", function (e) {
+        const searchText = document.getElementById("search-field").value;
+        if (e.key === "Enter") loadMeals(searchText);
+    });
+// *#####
 
 loadMeals("chicken");
