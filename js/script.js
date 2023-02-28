@@ -38,7 +38,7 @@ const displayFoods = (foods, dataLimit) => {
                 <h2 class="card-title text-2xl font-bold">${food.strMeal}</h2>
                 <p class="my-5 text-lg text-slate-500">There are many variations of <br/> passages of available, but the <br/> majority have suffered</p>
                 <div class="card-actions justify-start">
-                    <button class="btn btn-warning font-bold">View Details</button>
+                    <label onclick="loadCardDetails('${food.idMeal}')" for="my-modal" class="btn btn-warning font-bold">View Details</label>
                 </div>
             </div>
         `;
@@ -74,4 +74,37 @@ document.getElementById("btn-show-all").addEventListener("click", function () {
 
 // *#####
 
-loadMeals("chicken");
+// *#####
+// 1. Loading the Modal
+const loadCardDetails = async (foodId) => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    // console.log(data.meals[0]);
+    displayCardDetails(data.meals[0]);
+};
+
+// 2. Displaying the card details
+const displayCardDetails = (card) => {
+    const modalTitle = document.getElementById("modal-title");
+    modalTitle.innerText = card.strMeal;
+
+    const modalCategory = document.getElementById("modal-category");
+    modalCategory.innerText = card.strCategory;
+
+    const modalArea = document.getElementById("modal-area");
+    modalArea.innerText = card.strArea;
+
+    const modalText = document.getElementById("modal-text");
+    modalText.innerText = card.strInstructions;
+
+    const modalYoutube = document.getElementById("modal-youtube");
+    modalYoutube.innerText = card.strYoutube;
+
+    const modalImage = document.getElementById("modal-img");
+    modalImage.innerHTML = `<img src="${card.strMealThumb}"/>`;
+};
+
+//* #####
+
+loadMeals("chicken", 6);
