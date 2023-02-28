@@ -1,22 +1,22 @@
 // This is a function for loading Meals
-const loadMeals = async (foodType) => {
+const loadMeals = async (foodType, dataLimit) => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodType}`;
     const res = await fetch(url);
     const data = await res.json();
 
     // console.log(url);
-    displayFoods(data.meals);
+    displayFoods(data.meals, dataLimit);
 };
 
 // This is a function for displaying meals
-const displayFoods = (foods) => {
+const displayFoods = (foods, dataLimit) => {
     const cardContainer = document.getElementById("card-container");
     cardContainer.textContent = "";
 
     // Dynamic Visibility of ShowALl button
     const showAll = document.getElementById("show-all");
 
-    if (foods.length > 6) {
+    if (dataLimit && foods.length > 6) {
         foods = foods.slice(0, 6);
         showAll.classList.remove("hidden");
     } else {
@@ -46,22 +46,32 @@ const displayFoods = (foods) => {
     });
 };
 
+// Processing search to limit or delimiting dataset
+const processSearch = (dataLimit) => {
+    const searchText = document.getElementById("search-field").value;
+    loadMeals(searchText, dataLimit);
+};
+
 // *######
-// The below two function is used to get search text
+// The below functions are used to get search text
 
 // 1. This is when pressing the search button
 document.getElementById("btn-search").addEventListener("click", function () {
-    const searchText = document.getElementById("search-field").value;
-    loadMeals(searchText);
+    processSearch(6);
 });
 
 // 2. This is when pressing enter
 document
     .getElementById("search-field")
     .addEventListener("keydown", function (e) {
-        const searchText = document.getElementById("search-field").value;
-        if (e.key === "Enter") loadMeals(searchText);
+        if (e.key === "Enter") processSearch(6);
     });
+
+// 3. When pressing the show all button
+document.getElementById("btn-show-all").addEventListener("click", function () {
+    processSearch();
+});
+
 // *#####
 
 loadMeals("chicken");
